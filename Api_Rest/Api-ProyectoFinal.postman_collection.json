@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "6d7e9db3-3a5f-40cf-a65d-26875b91a15d",
+		"name": "Api-ProyectoFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Operaciones User",
+			"item": [
+				{
+					"name": "Get - All Usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put - modif usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Andres\",\r\n    \"apellido\":\"Gutierrez\",\r\n    \"password\":\"5678\",\r\n    \"ciudad\":\"Resistencia\",\r\n    \"provincia\":\"Chaco\",\r\n    \"pais\":\"Argentinaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post- Alta Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose\"\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get - Usuarios creados despues de Fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User/fecha?date=2020-12-22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User",
+								"fecha"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-12-22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET- Usuarios de Resistencia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User/ciudad?ciudad=resistencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User",
+								"ciudad"
+							],
+							"query": [
+								{
+									"key": "ciudad",
+									"value": "resistencia"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operaciones Comment",
+			"item": [
+				{
+					"name": "Get - All Comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post- Alta Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaCreacion\":\"1998-01-29\",\r\n    \"comentario\":\"oaoijsdoiajsoidjaoisdjoiasjd\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put - modif Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post  - Crear Comment con Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"coso del coso\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/3/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"3",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operaciones Post",
+			"item": [
+				{
+					"name": "Get - All Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post- Alta Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"titulo\":\"una cuistione magicaasss\",\r\n   \"descripcion\":\"aposdpssssoaskpdokaasdassdkoas\",\r\n   \"contenido\":\"ajsdoijasssssiodjasijasdasdasddoaisjdioa\",\r\n   \"fechaCreacion\":\"1996-02-29\",\r\n   \"publicado\":\"false\"\r\n   \r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put - modif Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n        \"title\": \"una cuistione magicaaaa\",\r\n        \"descripcion\": \"aposdpoaskpdokaasdassdkoas\",\r\n        \"contenido\": \"ajsdoijasiodjasijasdasdasddoaisjdioa\",\r\n        \"publicado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get - todos los post que contengan una palabra dada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/like?titulo=una",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"like"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "una"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get - Todos los post sin publicar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Post/publicado?publicado=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Post",
+								"publicado"
+							],
+							"query": [
+								{
+									"key": "publicado",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post -  Crear Post con Un usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"una cuistione \"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/User/1/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"User",
+								"1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

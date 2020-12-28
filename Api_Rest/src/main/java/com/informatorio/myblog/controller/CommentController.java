@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 @RestController
-@RequestMapping("/api/v1/Comment")
+@RequestMapping("/api/v1/")
 
 public class CommentController {
 
@@ -28,30 +27,35 @@ public class CommentController {
 
 
     //crear 
-    @PostMapping
+    @PostMapping("/Comment")
     public ResponseEntity<?> createPost(@RequestBody Comment comment) {
         return new ResponseEntity<>(commentRepository.save(comment), HttpStatus.CREATED);
     }
 
-    @GetMapping // ~ /api/v1/post
-    public ResponseEntity<?> getComments() {
-        return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
-    }
+    
 
     //PUT para modificar 
-    @PutMapping("/{commentId}")
+    @PutMapping("/Comment/{commentId}")
     public ResponseEntity<?> editComment(@PathVariable Long commentId, @Valid @RequestBody Comment comment) {
         Comment commentEdit = commentRepository.getOne(commentId);
-        commentEdit.setComentario(comment.getComentario());
+        commentEdit.setComment(comment.getComment());
         return new ResponseEntity<>(commentRepository.save(commentEdit), HttpStatus.OK);
     }
 
     //DELETE
-    @DeleteMapping("/{commentId}")
+    @DeleteMapping("/Comment/{commentId}")
     public ResponseEntity<?> deleteComment(@PathVariable Long commentId) {
         Comment commentDelete = commentRepository.getOne(commentId);
         commentRepository.delete(commentDelete);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    //Todos los comments
+    @GetMapping ("/Comment")
+    public ResponseEntity<?> getComments() {
+        return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
+    }
+
+    
     
 }

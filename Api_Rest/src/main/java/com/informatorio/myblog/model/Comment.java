@@ -1,6 +1,8 @@
 package com.informatorio.myblog.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,55 +10,79 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class Comment {
+public class Comment implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long idComment;
 
-    private Date fechaCreacion;
+    private LocalDate creationDate = LocalDate.now();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = id)
-    private User autor;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "autorComment", referencedColumnName = "idUser")
+    private User autorComment;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "idPost", referencedColumnName = "idPost")
+    private Post idPost;
+
+    @Size(max = 200)
     private String comentario;
 
+    public Long getIdComment() {
+        return this.idComment;
+    }
+
     
-    
-    public Long getId() {
-        return this.id;
+
+    public void setIdComment(Long idComment) {
+        this.idComment = idComment;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+
+    public LocalDate getFechaCreacion() {
+        return creationDate;
     }
 
-    public Date getFechaCreacion() {
-        return this.fechaCreacion;
+    public void setFechaCreacion(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public User getAutorComment() {
+        return this.autorComment;
     }
 
-    public User getAutor() {
-        return this.autor;
+    public void setAutorComment(User autorComment) {
+        this.autorComment = autorComment;
     }
 
-    public void setAutor(User autor) {
-        this.autor = autor;
+
+    public Post getPostAlQuePertenece() {
+        return idPost;
     }
 
-    public String getComentario() {
+    public void setPostAlQuePertenece(Post idPost) {
+        this.idPost = idPost;
+    }
+
+    public String getComment() {
         return this.comentario;
     }
 
-    public void setComentario(String comentario) {
+    public void setComment(String comentario) {
         this.comentario = comentario;
     }
+
+    
 
 }

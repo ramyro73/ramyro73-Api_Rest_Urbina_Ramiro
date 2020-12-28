@@ -1,55 +1,64 @@
 package com.informatorio.myblog.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Post {
+public class Post implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long idPost;
 
     @Column(nullable = false)
     @NotBlank
     @Size(min = 4)
-    private String title;
-
+    private String titulo;
 
     private String descripcion;
 
     private String contenido;
 
-    private Date fechaCreacion;
+    private LocalDate creationDate = LocalDate.now();
 
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "autorPost", referencedColumnName = "idUser")
+    private User autorPost;
+
+    
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name=id)
-    private User autor;
+    @JoinColumn(name = "idComment")
+    private List<Comment> comentarios = new ArrayList<>();
 
     private boolean publicado;
 
+    public Long getIdPost() {
+        return idPost;
+    }
+
     
 
-
-
-    public Long getId() {
-        return id;
+    public void setId(Long idPost) {
+        this.idPost = idPost;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {
@@ -68,21 +77,25 @@ public class Post {
         this.contenido = contenido;
     }
 
-    public Date getFechaCreacion() {
-        return this.fechaCreacion;
+
+    public LocalDate getFechaCreacion() {
+        return creationDate;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacion(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public User getAutor() {
-        return this.autor;
+
+    public User getAutorPost() {
+        return this.autorPost;
     }
 
-    public void setAutor(User autor) {
-        this.autor = autor;
+    public void setAutorPost(User autorPost) {
+        this.autorPost = autorPost;
     }
+
+    
 
     public boolean getPublicado() {
         return this.publicado;
@@ -91,6 +104,22 @@ public class Post {
     public void setPublicado(boolean publicado) {
         this.publicado = publicado;
     }
+
+    public void addComment(Comment comment) {
+		this.comentarios.add(comment);
+		comment.setPostAlQuePertenece(this);
+    }
+
+
+    /* public List<Comment> getComments() {
+        return comentarios;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comentarios = comments;
+    } */
+    
+    
 
 
 

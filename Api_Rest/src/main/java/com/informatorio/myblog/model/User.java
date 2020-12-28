@@ -1,22 +1,34 @@
 package com.informatorio.myblog.model;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
 
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long idUser;
 
     @Column(unique=true)
     private String userName;
 
+
+	@Column(nullable = false)
+  	@NotBlank
+  	@Size(min = 4)
     private String nombre;
     
     private String apellido;
@@ -26,13 +38,20 @@ public class User {
 
     private String password;
 
-    private Date fechaCreacion;
 
     private String ciudad;
 
     private String provincia;
 
-    private String pais;
+	private String pais;
+	
+	@OneToMany
+	private List<Post> posts = new ArrayList<>();
+
+	@OneToMany
+	private List<Comment> comments = new ArrayList<>();
+	
+	private LocalDate creationDate = LocalDate.now();
 
 
 
@@ -45,6 +64,7 @@ public class User {
 	}
 	
 	@JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public String getPassword() {
 		return this.password;
 	}
@@ -53,13 +73,6 @@ public class User {
 		this.password = password;
 	}
 
-	public Date getFechaCreacion() {
-		return this.fechaCreacion;
-	}
-
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
 
 	public String getCiudad() {
 		return this.ciudad;
@@ -110,7 +123,57 @@ public class User {
 		this.apellido = apellido;
 	}
 
-    
+
+
+    public void addPost(Post post) {
+		this.posts.add(post);
+		post.setAutorPost(this);
+	}
+
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
+		comment.setAutorComment(this);
+	}
+	
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+	
+	public void setCreationDate(LocalDate creationDate) {
+		
+		this.creationDate = creationDate;
+	 
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+
+		this.posts = posts;
+	}
+
+
+	/* public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+
+		this.comments = comments;
+	} */
+	
+	
+	
 
     
     
