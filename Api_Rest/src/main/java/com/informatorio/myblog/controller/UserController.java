@@ -46,15 +46,17 @@ public class UserController {
 
 
     //Baja por id
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/User/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         User userDelete = userRepository.getOne(userId);
         userRepository.delete(userDelete);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    
+
     //Modificacion 
-    @PutMapping("/{userId}")
+    @PutMapping("/User/{userId}")
     public ResponseEntity<?> editUser(@PathVariable Long userId, @Valid @RequestBody User user) {
         User userEdit = userRepository.getOne(userId);
         userEdit.setNombre(user.getNombre());

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6d7e9db3-3a5f-40cf-a65d-26875b91a15d",
+		"_postman_id": "a146c754-69f9-4d0e-9160-22293eadbc5d",
 		"name": "Api-ProyectoFinal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -47,7 +47,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/User/2",
+							"raw": "http://localhost:8080/api/v1/User/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -57,7 +57,7 @@
 								"api",
 								"v1",
 								"User",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -225,7 +225,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fechaCreacion\":\"1998-01-29\",\r\n    \"comentario\":\"oaoijsdoiajsoidjaoisdjoiasjd\"\r\n\r\n}",
+							"raw": "{\r\n   \r\n    \r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,7 +254,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/Comment/",
+							"raw": "http://localhost:8080/api/v1/Comment/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -264,7 +264,7 @@
 								"api",
 								"v1",
 								"Comment",
-								""
+								"6"
 							]
 						}
 					},
@@ -369,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"titulo\":\"una cuistione magicaasss\",\r\n   \"descripcion\":\"aposdpssssoaskpdokaasdassdkoas\",\r\n   \"contenido\":\"ajsdoijasssssiodjasijasdasdasddoaisjdioa\",\r\n   \"fechaCreacion\":\"1996-02-29\",\r\n   \"publicado\":\"false\"\r\n   \r\n\r\n\r\n}",
+							"raw": "{\r\n   \"titulo\":\"una cuistionee magicaasss\",\r\n   \"descripcion\":\"aposdpssssoaskpdokaasdassdkoas\",\r\n   \"contenido\":\"ajsdoijasssssiodjasijasdasdasddoaisjdioa\",\r\n   \"fechaCreacion\":\"1996-02-29\",\r\n   \"publicado\":\"false\"\r\n   \r\n\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
